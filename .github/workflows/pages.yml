@@ -31,30 +31,99 @@ jobs:
           cp "Pastor Preparation Dashboard.html" _site/index.html
           python3 - <<'PY'
           from pathlib import Path
-          p = Path('_site/index.html')
-          s = p.read_text()
-          marker = '<section class="track card">\n<div class="kicker">Track 2</div>\n<h2>Preaching & Teaching</h2>'
-          classes = '''<section class="track card" id="pastor-preparation-classes">
-          <div class="kicker">Pastor Preparation Classes</div>
-          <h2>Core Ministry Classes</h2>
-          <p class="meta">Complete each structured class as part of your pastoral preparation. Whole-Bible reading remains a separate long-term formation goal and is not included in this class list.</p>
-          <div class="module"><h3>Bible & Hermeneutics</h3><p>Interpret Scripture using literary, historical, grammatical, canonical, and theological context.</p><label><input class="task" id="class-hermeneutics" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Systematic Theology</h3><p>Study Scripture, God, Trinity, Christ, humanity and sin, salvation, sanctification, the Holy Spirit, the church, and last things.</p><label><input class="task" id="class-theology" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Preaching & Teaching</h3><p>Develop exegesis, sermon structure, explanation, illustration, application, delivery, and Spirit-dependent preaching.</p><label><input class="task" id="class-preaching" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Holy Spirit & Spiritual Gifts</h3><p>Study the person and work of the Holy Spirit, spiritual gifts, discernment, order, prayer ministry, and biblical charismatic practice.</p><label><input class="task" id="class-spirit" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Pastoral Care & Shepherding</h3><p>Develop competence in visitation, counseling boundaries, grief care, prayer, crisis response, referrals, and shepherding.</p><label><input class="task" id="class-care" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Church Leadership & Eldership</h3><p>Study pastoral qualifications, elders, deacons, accountability, leadership development, meetings, conflict, and church discipline.</p><label><input class="task" id="class-leadership" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Church Administration</h3><p>Learn budgeting, financial controls, policies, volunteers, staff systems, facilities, records, insurance, and ministry operations.</p><label><input class="task" id="class-administration" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Discipleship, Evangelism & Missions</h3><p>Learn to make disciples, share the gospel, equip believers, develop leaders, and cultivate local and global mission.</p><label><input class="task" id="class-discipleship" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Church Planting</h3><p>Study calling, community exegesis, launch-team development, discipleship systems, financial runway, multiplication, and sustainable church planting.</p><label><input class="task" id="class-planting" type="checkbox"> Class complete</label></div>
-          <div class="module"><h3>Pastoral Ethics & Safeguarding</h3><p>Study integrity, confidentiality, boundaries, child protection, abuse response, mandated reporting, sexual ethics, finances, and pastoral accountability.</p><label><input class="task" id="class-ethics" type="checkbox"> Class complete</label></div>
-          </section>
+          p=Path('_site/index.html')
+          s=p.read_text()
+          marker='<section class="track card">\n<div class="kicker">Track 2</div>\n<h2>Preaching & Teaching</h2>'
+          classes='''<section class="track card" id="pastor-preparation-classes">
+<div class="kicker">Pastor Preparation Classes</div>
+<h2>Custom Self-Directed Ministry Curriculum</h2>
+<p class="meta">Ten structured classes combining free online instruction, Scripture, recommended books, and practical ministry assignments. Whole-Bible reading remains a separate formation goal and is not a class requirement here.</p>
 
-          '''
-          if 'id="pastor-preparation-classes"' not in s:
-              if marker not in s:
-                  raise SystemExit('Track 2 marker not found')
-              s = s.replace(marker, classes + marker, 1)
+<div class="module"><div class="label">Class 1</div><h3>Bible & Hermeneutics</h3>
+<p><strong>Description:</strong> Learn to interpret Scripture faithfully through literary genre, historical setting, context, structure, biblical theology, and canonical connections.</p>
+<p><strong>Free course / video:</strong> <a href="https://bibleproject.com/classroom/introduction-to-the-hebrew-bible/" target="_blank">BibleProject Classroom — Introduction to the Hebrew Bible</a>.</p>
+<p><strong>Recommended reading:</strong> <em>Grasping God's Word</em> — J. Scott Duvall & J. Daniel Hays; <em>How to Read the Bible for All Its Worth</em> — Gordon Fee & Douglas Stuart.</p>
+<p><strong>Scripture:</strong> Nehemiah 8:1–8; Luke 24:25–27; Acts 17:10–12; 2 Timothy 2:15.</p>
+<p><strong>Assignment:</strong> Exegete one epistle paragraph and one narrative passage. For each, identify context, genre, structure, main point, theological claims, and legitimate applications. Produce a 2–3 page interpretation report.</p>
+<label><input class="task" id="class-hermeneutics" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 2</div><h3>Systematic Theology</h3>
+<p><strong>Description:</strong> Build an organized doctrinal framework covering Scripture, God, Trinity, Christ, humanity and sin, salvation, sanctification, the Holy Spirit, church, and last things.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.biblicaltraining.org/theology" target="_blank">BiblicalTraining Theology — Understanding Theology / Systematic Theology</a>. BiblicalTraining makes its lecture classes available to listen to free.</p>
+<p><strong>Recommended reading:</strong> <em>Christian Theology</em> — Millard Erickson; <em>Systematic Theology</em> — Wayne Grudem. Compare disputed doctrines with other evangelical and charismatic scholarship rather than relying on one author.</p>
+<p><strong>Scripture:</strong> Use the major biblical texts for each doctrine as you work through the course.</p>
+<p><strong>Assignment:</strong> Build a pastor-level statement of faith. For every doctrine include key texts, a concise position, major evangelical disagreements, your conclusion, and pastoral implications.</p>
+<label><input class="task" id="class-theology" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 3</div><h3>Preaching & Teaching</h3>
+<p><strong>Description:</strong> Develop text-driven, Christ-centered, Spirit-dependent preaching from exegesis through sermon construction, application, and delivery.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/basics-of-preaching/" target="_blank">TGC — Basics of Preaching</a> and <a href="https://www.desiringgod.org/messages/how-to-preach-in-the-power-of-the-spirit" target="_blank">How to Preach in the Power of the Spirit</a>.</p>
+<p><strong>Recommended reading:</strong> <em>Biblical Preaching</em> — Haddon Robinson; <em>Christ-Centered Preaching</em> — Bryan Chapell.</p>
+<p><strong>Scripture:</strong> Nehemiah 8:1–8; 1 Corinthians 2:1–5; 2 Timothy 3:14–4:5.</p>
+<p><strong>Assignment:</strong> Analyze 12 sermons, prepare 12 five-minute expositions, then prepare and deliver four 20-minute sermons from different biblical genres. Record and evaluate each full sermon for faithfulness, clarity, structure, application, delivery, and dependence on the Spirit.</p>
+<label><input class="task" id="class-preaching" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 4</div><h3>Holy Spirit & Spiritual Gifts</h3>
+<p><strong>Description:</strong> Study the person and work of the Holy Spirit, filling and empowerment, gifts, discernment, prayer ministry, order, and responsible charismatic practice.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/the-work-of-the-spirit/" target="_blank">TGC — The Work of the Spirit</a>.</p>
+<p><strong>Recommended reading:</strong> <em>Practicing the Power</em> — Sam Storms; <em>Showing the Spirit</em> — D. A. Carson. Read across continuationist and cautious evangelical perspectives.</p>
+<p><strong>Scripture:</strong> Acts 2, 8, 10, 19; Romans 12; 1 Corinthians 12–14; Ephesians 4; 1 Thessalonians 5:19–22.</p>
+<p><strong>Assignment:</strong> Write ministry guidelines for prophecy, tongues and interpretation, healing prayer, discernment, testing impressions, correction, safety, and pastoral oversight. Defend each guideline from Scripture.</p>
+<label><input class="task" id="class-spirit" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 5</div><h3>Pastoral Care & Shepherding</h3>
+<p><strong>Description:</strong> Learn biblical shepherding, prayer, visitation, grief care, counseling boundaries, crisis response, referral, and care for people through suffering.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/the-pastor-as-shepherd/" target="_blank">TGC — The Pastor as Shepherd</a>.</p>
+<p><strong>Recommended reading:</strong> <em>The Shepherd Leader</em> — Timothy Witmer; <em>The Reformed Pastor</em> — Richard Baxter.</p>
+<p><strong>Scripture:</strong> Psalm 23; Ezekiel 34; John 10:1–18; Acts 20:17–38; 1 Thessalonians 2:1–12; 1 Peter 5:1–4.</p>
+<p><strong>Assignment:</strong> Under appropriate church supervision, observe or assist with several pastoral-care situations. Then write response plans for grief, hospitalization, conflict, suicidal statements, suspected abuse, domestic violence, and situations requiring licensed clinical or emergency care.</p>
+<label><input class="task" id="class-care" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 6</div><h3>Church Leadership & Eldership</h3>
+<p><strong>Description:</strong> Study biblical pastoral qualifications, elders, deacons, accountability, team leadership, developing leaders, conflict, discipline, and shepherding authority.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/basics-of-church-eldership/" target="_blank">TGC — Basics of Church Eldership</a>.</p>
+<p><strong>Recommended reading:</strong> <em>Biblical Eldership</em> — Alexander Strauch; <em>Church Elders</em> — Jeramie Rinne; <em>Spiritual Leadership</em> — J. Oswald Sanders.</p>
+<p><strong>Scripture:</strong> Acts 6:1–7; Acts 14:23; Acts 20:17–38; 1 Timothy 3; Titus 1; 1 Peter 5:1–5.</p>
+<p><strong>Assignment:</strong> Create a governance diagram and elder-development pathway. Complete six leadership case studies involving disagreement, discipline, staff performance, doctrinal error, financial concern, and rapid growth.</p>
+<label><input class="task" id="class-leadership" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 7</div><h3>Church Administration</h3>
+<p><strong>Description:</strong> Learn the operational systems that protect ministry: budgeting, internal controls, hiring, volunteers, records, policies, facilities, insurance, safeguarding, and legal awareness.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/church-administration/" target="_blank">TGC — Church Administration</a>.</p>
+<p><strong>Recommended reading:</strong> <em>Church Administration Handbook</em> — Bruce Powers; supplement with current guidance from qualified legal, accounting, insurance, and safeguarding professionals because laws and compliance requirements change.</p>
+<p><strong>Scripture:</strong> Exodus 18:13–27; Acts 6:1–7; 1 Corinthians 14:40; 2 Corinthians 8:16–24.</p>
+<p><strong>Assignment:</strong> Build a mock annual church budget, approval matrix, expense-control process, volunteer onboarding checklist, incident-report form, child-safety workflow, and sample staff/leadership meeting agenda.</p>
+<label><input class="task" id="class-administration" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 8</div><h3>Discipleship, Evangelism & Missions</h3>
+<p><strong>Description:</strong> Learn to proclaim the gospel, make disciples, equip believers, develop leaders, and cultivate local and global mission.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/making-disciples/" target="_blank">TGC — Making Disciples</a> plus <a href="https://www.thegospelcoalition.org/course/advancing-the-gospel-deep-and-wide/" target="_blank">Advancing the Gospel Deep and Wide</a>.</p>
+<p><strong>Recommended reading:</strong> <em>The Master Plan of Evangelism</em> — Robert Coleman; <em>The Trellis and the Vine</em> — Colin Marshall & Tony Payne.</p>
+<p><strong>Scripture:</strong> Matthew 28:18–20; Luke 9–10; Acts 1:8; Acts 2:37–47; 2 Timothy 2:1–2; Titus 2.</p>
+<p><strong>Assignment:</strong> Design a discipleship pathway from guest to mature multiplying disciple. Disciple at least one person under local-church accountability and develop a written evangelism and missions strategy for a local church.</p>
+<label><input class="task" id="class-discipleship" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 9</div><h3>Church Planting</h3>
+<p><strong>Description:</strong> Study calling, readiness, evangelism, contextualization, launch teams, discipleship, finances, leadership, multiplication, challenges, and healthy measures of success.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/gospel-rich-church-planting/" target="_blank">TGC — Gospel-Rich Church Planting</a>.</p>
+<p><strong>Recommended reading:</strong> <em>Church Planting Is for Wimps</em> — Mike McKinley; <em>Planting Missional Churches</em> — Ed Stetzer & Daniel Im.</p>
+<p><strong>Scripture:</strong> Matthew 16:13–20; Matthew 28:18–20; Acts 2; Acts 13–20; Titus 1:5.</p>
+<p><strong>Assignment:</strong> Complete a community-exegesis project and build an Awaken Life Church readiness dossier covering calling, doctrine, target community, launch team, discipleship, governance, finances, safeguarding, ministry philosophy, first-year plan, and measurable readiness gaps. Have mature pastors critique it.</p>
+<label><input class="task" id="class-planting" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 10</div><h3>Pastoral Ethics & Safeguarding</h3>
+<p><strong>Description:</strong> Develop pastoral integrity and sound boundaries involving power, confidentiality, sexuality, money, counseling, children, vulnerable adults, abuse allegations, reporting, and accountability.</p>
+<p><strong>Free course / video:</strong> <a href="https://www.thegospelcoalition.org/course/watch-your-life/" target="_blank">TGC — Watch Your Life</a> and <a href="https://www.thegospelcoalition.org/course/ethics-making-biblical-decisions/" target="_blank">Ethics: Making Biblical Decisions</a>.</p>
+<p><strong>Recommended reading:</strong> <em>The Pastor's Soul</em> — Brian Croft & Jim Savastio; use current denominational/ministry safeguarding manuals and obtain professional legal guidance for mandatory-reporting and abuse-response policies in the jurisdiction where ministry occurs.</p>
+<p><strong>Scripture:</strong> Proverbs 4:23; 1 Timothy 3:1–7; 1 Timothy 4:12–16; 1 Timothy 5:1–2,19–22; Titus 1:5–9; James 3:1.</p>
+<p><strong>Assignment:</strong> Draft a pastoral code of ethics and safeguarding policy covering counseling boundaries, confidentiality and its limits, communications, transportation, children/youth, financial integrity, sexual misconduct, allegations against leaders, reporting/escalation, documentation, and outside accountability. Have qualified church leaders and appropriate professionals review it before real-world adoption.</p>
+<label><input class="task" id="class-ethics" type="checkbox"> Class complete</label></div>
+</section>
+
+'''
+          if marker not in s:
+              raise SystemExit('Track 2 marker not found')
+          s=s.replace(marker,classes+marker,1)
           p.write_text(s)
           PY
           touch _site/.nojekyll
