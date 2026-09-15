@@ -25,10 +25,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload site
+      - name: Build dashboard site
+        run: |
+          mkdir -p _site
+          cp "Pastor Preparation Dashboard.html" _site/index.html
+          touch _site/.nojekyll
+      - name: Upload dashboard
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
