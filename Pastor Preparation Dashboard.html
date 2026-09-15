@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pastor Preparation Learning Dashboard</title>
+<style>
+:root{
+  --bg:#0f1115; --panel:#171a21; --panel2:#1d212a; --text:#f3f4f6;
+  --muted:#a6adbb; --line:#2a303b; --accent:#d6b66b; --good:#69c58f;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+header{padding:34px 24px 26px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#151821,#0f1115)}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:0 0 10px}
+h2{font-size:1.5rem;margin:0 0 14px}
+h3{margin:0 0 8px;font-size:1.08rem}
+p{margin:6px 0 0}
+.sub{color:var(--muted);max-width:820px}
+.tag{display:inline-block;border:1px solid var(--line);padding:5px 9px;border-radius:999px;color:var(--muted);font-size:.82rem;margin:4px 6px 0 0}
+main{padding:26px 24px 50px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.hero{grid-column:span 12}
+.col6{grid-column:span 6}
+.col4{grid-column:span 4}
+.col8{grid-column:span 8}
+@media(max-width:850px){.col6,.col4,.col8{grid-column:span 12}}
+.progress{height:10px;background:#0b0d11;border-radius:20px;overflow:hidden;margin-top:10px;border:1px solid var(--line)}
+.bar{height:100%;background:var(--accent);width:0%}
+.kicker{color:var(--accent);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+input[type=checkbox]{margin-top:5px;transform:scale(1.15)}
+a{color:#f1d79a;text-decoration:none}
+a:hover{text-decoration:underline}
+.meta{font-size:.86rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{display:inline-block;padding:8px 11px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);font-size:.9rem}
+.track{margin-top:20px}
+.module{margin-top:14px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}
+.module strong{color:#fff}
+.label{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700}
+.note{background:#12151b;border-left:3px solid var(--accent);padding:12px 14px;border-radius:8px;margin-top:12px;color:#d9dde5}
+footer{border-top:1px solid var(--line);padding:24px;color:var(--muted);font-size:.88rem}
+small{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="kicker">Pastor Preparation</div>
+<h1>Learning Dashboard</h1>
+<p class="sub">A self-directed training system for becoming a biblically grounded, Spirit-dependent, pastorally competent church leader. Use it to study, watch, practice, and build real ministry experience over time.</p>
+<div style="margin-top:12px">
+<span class="tag">Bible-centered</span><span class="tag">Evangelical</span><span class="tag">Charismatic</span><span class="tag">Pastoral Formation</span><span class="tag">Church Planting</span>
+</div>
+</div>
+</header>
+
+<main><div class="wrap">
+<div class="grid">
+
+<section class="card hero">
+<div class="kicker">Start Here</div>
+<h2>What should I learn today?</h2>
+<p class="meta">Complete these four items before moving deeper into the library.</p>
+
+<div class="item"><input class="task" id="today1" type="checkbox"><div><strong>Watch:</strong> <a href="https://www.desiringgod.org/messages/how-to-preach-in-the-power-of-the-spirit" target="_blank">How to Preach in the Power of the Spirit</a><div class="meta">John Piper · Preaching & dependence on the Holy Spirit</div></div></div>
+<div class="item"><input class="task" id="today2" type="checkbox"><div><strong>Read:</strong> <a href="https://www.desiringgod.org/articles/we-preach-in-the-presence-of-god" target="_blank">We Preach in the Presence of God</a><div class="meta">Focus: preaching as accurate exposition and heartfelt proclamation.</div></div></div>
+<div class="item"><input class="task" id="today3" type="checkbox"><div><strong>Scripture:</strong> Read 2 Timothy 3:14–4:5 slowly. Write down every command Paul gives Timothy.</div></div>
+<div class="item"><input class="task" id="today4" type="checkbox"><div><strong>Practice:</strong> Prepare a 5-minute exposition of 2 Timothy 4:1–2. State the text's main point in one sentence, explain it, and apply it.</div></div>
+
+<div class="progress"><div class="bar" id="todayBar"></div></div>
+<div class="meta" id="todayText">0 of 4 complete</div>
+</section>
+
+<section class="card col4">
+<div class="kicker">Method</div>
+<h2>How to use this</h2>
+<p>Do not binge content. For each module:</p>
+<div class="item"><div><strong>1. Watch</strong><div class="meta">Learn from an experienced teacher or pastor.</div></div></div>
+<div class="item"><div><strong>2. Read</strong><div class="meta">Slow down and engage the argument.</div></div></div>
+<div class="item"><div><strong>3. Study Scripture</strong><div class="meta">Test the teaching against the biblical text.</div></div></div>
+<div class="item"><div><strong>4. Practice</strong><div class="meta">Turn knowledge into pastoral competence.</div></div></div>
+</section>
+
+<section class="card col8">
+<div class="kicker">Priority</div>
+<h2>Your formation order</h2>
+<p>Build depth before complexity. The recommended order is:</p>
+<p><strong>Scripture & doctrine → character & prayer → preaching → pastoral care → leadership → administration → church planting.</strong></p>
+<div class="note">A future pastor is not ready because he has consumed a large library. Readiness grows through tested character, doctrinal stability, accountable service, repeated ministry practice, and trusted leaders affirming his fitness.</div>
+</section>
+
+</div>
+
+<section class="track card">
+<div class="kicker">Track 1</div>
+<h2>Bible, Hermeneutics & Theology</h2>
+
+<div class="module">
+<div class="label">Module 1 · Biblical Story</div>
+<h3>Understand the Bible as one unified story</h3>
+<p><strong>Watch / Course:</strong> <a href="https://bibleproject.com/classroom/" target="_blank">BibleProject Classroom</a> — choose a foundational class on the Hebrew Bible, biblical story, or interpretation.</p>
+<p><strong>Read:</strong> Genesis 1–3; Genesis 12; Exodus 19; 2 Samuel 7; Jeremiah 31; Luke 24; Acts 2; Revelation 21–22.</p>
+<p><strong>Practice:</strong> Write a one-page biblical-theology overview: Creation → Fall → Covenant → Christ → Church → New Creation.</p>
+<label><input class="task" id="m1" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 2 · Hermeneutics</div>
+<h3>Learn to interpret before you apply</h3>
+<p><strong>Watch:</strong> Use BibleProject Classroom's interpretation material and compare how genre, literary context, historical setting, and canonical context affect meaning.</p>
+<p><strong>Read:</strong> Nehemiah 8:1–8; Luke 24:25–27; Acts 17:10–12; 2 Timothy 2:15.</p>
+<p><strong>Practice:</strong> Choose one paragraph from an epistle. Identify author, audience, context, structure, main point, theological claims, and legitimate applications.</p>
+<label><input class="task" id="m2" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 3 · Doctrine</div>
+<h3>Build a pastor-level doctrinal framework</h3>
+<p><strong>Study:</strong> Work systematically through Scripture, Trinity, Christology, humanity and sin, salvation, sanctification, Holy Spirit, church, ordinances, gifts, last things, and final judgment.</p>
+<p><strong>Practice:</strong> For every doctrine, maintain four sections: biblical texts, doctrinal summary, major evangelical disagreements, and pastoral implications.</p>
+<label><input class="task" id="m3" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 2</div>
+<h2>Preaching & Teaching</h2>
+
+<div class="module">
+<div class="label">Module 1 · Authority</div>
+<h3>Preach the text rather than your ideas</h3>
+<p><strong>Watch:</strong> <a href="https://www.desiringgod.org/messages/preach-the-word-for-the-time-of-my-departure-has-come" target="_blank">Preach the Word</a>.</p>
+<p><strong>Read:</strong> 2 Timothy 3:14–4:5.</p>
+<p><strong>Practice:</strong> Build a sermon outline where every major point can be traced directly to the passage.</p>
+<label><input class="task" id="p1" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 2 · Word & Spirit</div>
+<h3>Depend on the Holy Spirit without neglecting preparation</h3>
+<p><strong>Watch:</strong> <a href="https://www.desiringgod.org/messages/how-to-preach-in-the-power-of-the-spirit" target="_blank">How to Preach in the Power of the Spirit</a>.</p>
+<p><strong>Read:</strong> 1 Corinthians 2:1–16; Galatians 3:1–5; Acts 4:23–31.</p>
+<p><strong>Practice:</strong> Prepare your sermon carefully, then write a pre-sermon prayer covering illumination, humility, courage, love, clarity, conviction, and dependence on the Spirit.</p>
+<label><input class="task" id="p2" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 3 · Sermon Craft</div>
+<h3>Move from exegesis to explanation and application</h3>
+<p><strong>Read:</strong> <a href="https://www.desiringgod.org/topics/preaching-and-teaching/articles.html" target="_blank">Desiring God — Preaching & Teaching Articles</a>.</p>
+<p><strong>Practice:</strong> Prepare a 15–20 minute sermon with: introduction, main idea, textual explanation, theological connection, illustrations, applications, gospel connection, conclusion.</p>
+<p><strong>Evaluation:</strong> Record yourself. Review clarity, faithfulness, pace, filler words, eye contact, transitions, application, and emotional tone.</p>
+<label><input class="task" id="p3" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 3</div>
+<h2>Spiritual Formation & Character</h2>
+
+<div class="module">
+<div class="label">Module 1 · Pastoral Qualifications</div>
+<h3>Character comes before platform</h3>
+<p><strong>Read:</strong> 1 Timothy 3:1–7; Titus 1:5–9; 1 Peter 5:1–4.</p>
+<p><strong>Practice:</strong> Turn every qualification into a personal examination question. Review it monthly with a trusted pastor or mentor.</p>
+<label><input class="task" id="s1" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 2 · Prayer</div>
+<h3>Develop a durable prayer life</h3>
+<p><strong>Read:</strong> Matthew 6:5–13; Luke 11:1–13; John 15; Acts 4:23–31; Ephesians 1:15–23; 3:14–21.</p>
+<p><strong>Practice:</strong> Keep a weekly rhythm of adoration, confession, thanksgiving, intercession, listening, and Scripture-shaped prayer.</p>
+<label><input class="task" id="s2" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 4</div>
+<h2>Pastoral Care & Shepherding</h2>
+
+<div class="module">
+<div class="label">Module 1 · Shepherding</div>
+<h3>Learn to care for people, not merely lead programs</h3>
+<p><strong>Read:</strong> John 10:1–18; Acts 20:17–38; 1 Thessalonians 2:1–12; 1 Peter 5:1–4.</p>
+<p><strong>Practice:</strong> Shadow mature pastors in hospital visits, prayer ministry, funerals, weddings, conflict conversations, and pastoral counseling where appropriate and permitted.</p>
+<label><input class="task" id="c1" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 2 · Difficult Situations</div>
+<h3>Know your limits and escalation points</h3>
+<p><strong>Practice:</strong> Build written response protocols for suspected abuse, suicidal statements, domestic violence, medical emergencies, threats, child safeguarding, mandated-reporting issues, and situations requiring licensed clinical care.</p>
+<p class="meta">Pastoral ministry is not a substitute for emergency services, medical care, licensed therapy, or legal advice.</p>
+<label><input class="task" id="c2" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 5</div>
+<h2>Church Leadership, Governance & Operations</h2>
+
+<div class="module">
+<div class="label">Module 1 · Elders & Deacons</div>
+<h3>Understand biblical offices and accountability</h3>
+<p><strong>Read:</strong> Acts 6:1–7; Acts 14:23; Acts 20:17–38; Philippians 1:1; 1 Timothy 3; Titus 1; 1 Peter 5.</p>
+<p><strong>Resource Library:</strong> <a href="https://www.9marks.org/" target="_blank">9Marks</a> — use its material on elders, deacons, membership, discipline, preaching, and church polity as a serious evangelical conversation partner.</p>
+<p><strong>Practice:</strong> Draft a one-page governance diagram showing congregation, senior pastor/lead elder, elders, deacons, staff, financial controls, and safeguarding accountability.</p>
+<label><input class="task" id="l1" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 2 · Administration</div>
+<h3>Learn the systems that protect ministry</h3>
+<p><strong>Study:</strong> budgeting, internal controls, benevolence, insurance, volunteer screening, child protection, facilities, incident reporting, staff policies, records retention, and emergency planning.</p>
+<p><strong>Practice:</strong> Build a mock annual church budget and identify who can approve, spend, reconcile, review, and audit each category.</p>
+<label><input class="task" id="l2" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 6</div>
+<h2>Holy Spirit & Charismatic Ministry</h2>
+
+<div class="module">
+<div class="label">Module 1 · Gifts & Order</div>
+<h3>Pursue spiritual gifts with biblical order</h3>
+<p><strong>Read:</strong> Acts 2; Acts 8; Acts 10; Acts 19; Romans 12:3–8; 1 Corinthians 12–14; Ephesians 4:1–16; 1 Thessalonians 5:19–22.</p>
+<p><strong>Practice:</strong> Write guidelines for prophecy, tongues/interpretation, prayer ministry, healing prayer, discernment, correction, and pastoral oversight that preserve both expectancy and accountability.</p>
+<label><input class="task" id="h1" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 7</div>
+<h2>Discipleship, Evangelism & Missions</h2>
+
+<div class="module">
+<div class="label">Module 1 · Make Disciples</div>
+<h3>Design ministry around transformation, not attendance</h3>
+<p><strong>Read:</strong> Matthew 28:18–20; Luke 9:23–26; Acts 2:37–47; 2 Timothy 2:1–7; Titus 2.</p>
+<p><strong>Practice:</strong> Build a simple discipleship pathway that answers: How does someone move from visitor → believer → disciple → servant → leader → multiplier?</p>
+<label><input class="task" id="d1" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Track 8</div>
+<h2>Church Planting & Awaken Life Preparation</h2>
+
+<div class="module">
+<div class="label">Module 1 · Calling & Readiness</div>
+<h3>Separate vision from readiness</h3>
+<p><strong>Study:</strong> calling, doctrinal examination, pastoral qualifications, elder affirmation, preaching competence, conflict maturity, financial sustainability, family readiness, team formation, and community need.</p>
+<p><strong>Practice:</strong> Ask at least three mature pastors to evaluate you independently against 1 Timothy 3 and Titus 1. Record their concerns without arguing with them.</p>
+<label><input class="task" id="a1" type="checkbox"> Module complete</label>
+</div>
+
+<div class="module">
+<div class="label">Module 2 · Awaken Life</div>
+<h3>Test the future church model before launch</h3>
+<p><strong>Practice:</strong> Maintain a living church-plant dossier covering doctrine, governance, membership, discipleship, finances, staffing, safeguarding, missions, preaching, worship, pastoral care, volunteer development, and launch assumptions.</p>
+<p><strong>Rule:</strong> Do not add systems simply because a future large church might need them. Build for the actual stage of ministry and add complexity only when growth requires it.</p>
+<label><input class="task" id="a2" type="checkbox"> Module complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Ongoing Library</div>
+<h2>Reliable resource hubs</h2>
+<div class="btns">
+<a class="btn" target="_blank" href="https://bibleproject.com/classroom/">BibleProject Classroom</a>
+<a class="btn" target="_blank" href="https://www.thegospelcoalition.org/courses/">TGC Courses</a>
+<a class="btn" target="_blank" href="https://www.desiringgod.org/topics/preaching-and-teaching">Desiring God: Preaching</a>
+<a class="btn" target="_blank" href="https://www.desiringgod.org/topics/church-and-ministry">Desiring God: Church & Ministry</a>
+<a class="btn" target="_blank" href="https://www.9marks.org/">9Marks</a>
+</div>
+<div class="note">Use resource libraries as teachers, not as substitutes for Scripture or local pastoral mentorship. Compare theological claims with the biblical text and note where evangelical or charismatic traditions legitimately disagree.</div>
+</section>
+
+
+<section class="track card">
+<div class="kicker">Expanded Curriculum</div>
+<h2>Classes & Structured Courses</h2>
+
+<div class="module">
+<div class="label">Class 1 · Bible Reading Skills</div>
+<h3>Introduction to the Hebrew Bible — BibleProject</h3>
+<p><strong>Length:</strong> 14 hours 44 minutes · 29 sessions.</p>
+<p><strong>Take:</strong> <a href="https://bibleproject.com/classroom/introduction-to-the-hebrew-bible/" target="_blank">Introduction to the Hebrew Bible</a>.</p>
+<p><strong>Focus:</strong> canon shape, origins of the Hebrew Bible, poetry, narrative, repeated words, and literary design.</p>
+<p><strong>Assignment:</strong> Complete the teacher notes alongside the course and produce a 3–5 page summary of the interpretive skills you intend to use in sermon preparation.</p>
+<label><input class="task" id="class1" type="checkbox"> Class complete</label>
+</div>
+
+<div class="module">
+<div class="label">Class 2 · Shepherding</div>
+<h3>The Pastor as Shepherd — TGC / Bethlehem</h3>
+<p><strong>Take:</strong> <a href="https://www.thegospelcoalition.org/course/the-pastor-as-shepherd/" target="_blank">The Pastor as Shepherd</a>.</p>
+<p><strong>Focus:</strong> shepherding with leaders, fruit of the Spirit, unity, and prayer.</p>
+<p><strong>Assignment:</strong> Write your own biblical philosophy of pastoral shepherding using John 10, Acts 20, 1 Thessalonians 2, and 1 Peter 5.</p>
+<label><input class="task" id="class2" type="checkbox"> Class complete</label>
+</div>
+
+<div class="module">
+<div class="label">Class 3 · Administration</div>
+<h3>Church Administration — TGC / The Master's Seminary</h3>
+<p><strong>Take:</strong> <a href="https://www.thegospelcoalition.org/course/church-administration/" target="_blank">Church Administration</a>.</p>
+<p><strong>Focus:</strong> oversight, priorities, hiring, finances, team management, budgets, legal processes, and calling.</p>
+<p><strong>Assignment:</strong> Create a mock church budget, financial-control matrix, staff hiring workflow, and annual administrative calendar.</p>
+<label><input class="task" id="class3" type="checkbox"> Class complete</label>
+</div>
+
+<div class="module">
+<div class="label">Class 4 · BibleProject Sequence</div>
+<h3>Continue through the Classroom library</h3>
+<p><strong>Recommended sequence:</strong> Reading the Bible as Meditation Literature → Introduction to the Hebrew Bible → Heaven and Earth → Adam to Noah → Jonah → Rise of the Messiah → The Messianic Torah → Art of Biblical Words.</p>
+<p><strong>Library:</strong> <a href="https://bibleproject.com/classroom/" target="_blank">BibleProject Classroom</a>.</p>
+<p><strong>Assignment:</strong> Keep one notebook exclusively for biblical interpretation. Record literary observations, intertextual connections, questions, and sermon implications.</p>
+<label><input class="task" id="class4" type="checkbox"> Sequence milestone complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Reading Program</div>
+<h2>Pastoral Reading Curriculum</h2>
+
+<div class="module">
+<div class="label">Reading 1 · Pastoral Epistles</div>
+<h3>Read 1 Timothy, 2 Timothy, and Titus repeatedly</h3>
+<p>Read all three letters once per month for six months. Mark every statement concerning doctrine, character, false teaching, leadership qualifications, money, discipline, preaching, and endurance.</p>
+<label><input class="task" id="read1" type="checkbox"> Six-month cycle complete</label>
+</div>
+
+<div class="module">
+<div class="label">Reading 2 · Shepherding Texts</div>
+<h3>Build a biblical theology of shepherd leadership</h3>
+<p>Study Numbers 11; Psalm 23; Jeremiah 3:15; Jeremiah 23; Ezekiel 34; John 10; Acts 20; 1 Peter 5.</p>
+<p><strong>Assignment:</strong> Write 10 principles describing what a faithful shepherd does and 10 warnings describing abusive or negligent shepherding.</p>
+<label><input class="task" id="read2" type="checkbox"> Study complete</label>
+</div>
+
+<div class="module">
+<div class="label">Reading 3 · Leadership Library</div>
+<h3>Read across theology, leadership, and organizational health</h3>
+<p><strong>Core books to work through over time:</strong> <em>Spiritual Leadership</em> (J. Oswald Sanders), <em>The Reformed Pastor</em> (Richard Baxter), <em>Lectures to My Students</em> (Charles Spurgeon), <em>Biblical Eldership</em> (Alexander Strauch), <em>Simple Church</em> (Thom Rainer & Eric Geiger), and a serious preaching textbook such as <em>Biblical Preaching</em> (Haddon Robinson).</p>
+<p class="meta">These authors come from different evangelical traditions. Read critically and test claims against Scripture rather than treating any one ministry model as normative.</p>
+<label><input class="task" id="read3" type="checkbox"> Core library complete</label>
+</div>
+
+<div class="module">
+<div class="label">Reading 4 · 9Marks Leadership</div>
+<h3>Study healthy-church arguments even where you disagree</h3>
+<p><strong>Read/listen:</strong> <a href="https://www.9marks.org/" target="_blank">9Marks</a> resources on elders, membership, discipline, discipling, preaching, conversion, evangelism, and church leadership.</p>
+<p><strong>Assignment:</strong> For each major topic, record: “What I agree with,” “What I question,” “What Scripture says,” and “How I would apply this at Awaken Life.”</p>
+<label><input class="task" id="read4" type="checkbox"> Leadership study complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Sermon Lab</div>
+<h2>Preaching & Sermon Training</h2>
+
+<div class="module">
+<div class="label">Sermon Lab 1 · Observation</div>
+<h3>Listen like a preacher, not merely a listener</h3>
+<p>Each week, listen to one full sermon from a respected expositor. Do not copy style. Analyze structure, handling of the text, theological claims, illustrations, gospel connection, application, transitions, and conclusion.</p>
+<p><strong>Leadership/preaching library:</strong> <a href="https://www.desiringgod.org/topics/church-leadership/messages" target="_blank">Desiring God — Church Leadership Messages</a>.</p>
+<label><input class="task" id="sermon1" type="checkbox"> 12 sermon analyses complete</label>
+</div>
+
+<div class="module">
+<div class="label">Sermon Lab 2 · Short Exposition</div>
+<h3>5-minute sermons</h3>
+<p>Prepare and record 12 five-minute expositions. Each must have one main point, faithful explanation, one clear application, and a concise conclusion.</p>
+<label><input class="task" id="sermon2" type="checkbox"> 12 short expositions complete</label>
+</div>
+
+<div class="module">
+<div class="label">Sermon Lab 3 · Full Sermons</div>
+<h3>20-minute sermon cycle</h3>
+<p>Prepare 12 full sermons from different genres: Torah, narrative, wisdom, psalm, prophet, Gospel, Acts, Pauline epistle, general epistle, apocalyptic, topical-doctrinal, and evangelistic.</p>
+<p><strong>After each sermon:</strong> get feedback from a mature Christian leader and write three strengths, three weaknesses, and one concrete change for the next sermon.</p>
+<label><input class="task" id="sermon3" type="checkbox"> 12 full sermons complete</label>
+</div>
+
+<div class="module">
+<div class="label">Sermon Lab 4 · Preaching Series</div>
+<h3>Plan an entire series</h3>
+<p>Choose one short biblical book. Produce the series title, purpose, passage divisions, sermon main ideas, theological themes, applications, and final sermon manuscripts.</p>
+<label><input class="task" id="sermon4" type="checkbox"> Series complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Leadership Academy</div>
+<h2>Leadership Development</h2>
+
+<div class="module">
+<div class="label">Leadership 1 · Self-Leadership</div>
+<h3>Lead your own life before leading an organization</h3>
+<p>Study 1 Timothy 4:6–16. Build a personal rule of life covering Scripture, prayer, sleep, health, finances, sexual integrity, relationships, study, Sabbath/rest, and technology.</p>
+<label><input class="task" id="lead1" type="checkbox"> Rule of life built and tested for 90 days</label>
+</div>
+
+<div class="module">
+<div class="label">Leadership 2 · Developing Leaders</div>
+<h3>Learn multiplication</h3>
+<p>Study Exodus 18; Mark 3:13–19; Ephesians 4:11–16; 2 Timothy 2:1–2. Choose one person you can responsibly encourage, teach, and develop under existing church authority.</p>
+<p><strong>Listen:</strong> <a href="https://www.9marks.org/episode/on-discipling-your-elders-pastors-talk-ep-197/" target="_blank">9Marks Pastors Talk — Discipling Your Elders</a>.</p>
+<label><input class="task" id="lead2" type="checkbox"> Leadership-development cycle complete</label>
+</div>
+
+<div class="module">
+<div class="label">Leadership 3 · Meetings & Decisions</div>
+<h3>Run healthy leadership meetings</h3>
+<p>Practice agendas, decision rights, action items, minutes, follow-up, confidentiality, disagreement, and prayer. Run three mock elder/staff meetings using realistic church cases.</p>
+<label><input class="task" id="lead3" type="checkbox"> Three simulations complete</label>
+</div>
+
+<div class="module">
+<div class="label">Leadership 4 · Conflict & Discipline</div>
+<h3>Learn to handle difficult cases slowly and biblically</h3>
+<p>Study Matthew 18:15–20; Galatians 6:1–2; 1 Corinthians 5; 2 Corinthians 2:5–11. Listen to <a href="https://www.9marks.org/episode/on-criteria-for-discipline-pastors-talk-ep-253/" target="_blank">On Criteria for Church Discipline</a>.</p>
+<p><strong>Assignment:</strong> Work through five hypothetical cases with a mature pastor. Focus on facts, due process, restoration, confidentiality, safety, documentation, and when professional/legal guidance is required.</p>
+<label><input class="task" id="lead4" type="checkbox"> Casework complete</label>
+</div>
+
+<div class="module">
+<div class="label">Leadership 5 · Finance & Stewardship</div>
+<h3>Understand the money before you oversee it</h3>
+<p>Learn budgeting, cash reserves, restricted funds, benevolence, compensation, reimbursement, internal controls, dual authorization, financial reporting, insurance, and independent review.</p>
+<p><strong>Assignment:</strong> Build three budgets for hypothetical churches averaging 100, 300, and 600 people. Explain how staffing and ministry complexity should change at each stage.</p>
+<label><input class="task" id="lead5" type="checkbox"> Financial leadership project complete</label>
+</div>
+
+<div class="module">
+<div class="label">Leadership 6 · Pastoral Apprenticeship</div>
+<h3>Move from simulation to supervised ministry</h3>
+<p>Under your church's leadership, seek supervised experience in teaching, volunteer leadership, pastoral visits, prayer ministry, event leadership, difficult conversations, planning, and follow-up.</p>
+<p><strong>Requirement:</strong> Ask the supervising pastor to evaluate character, teachability, reliability, theological judgment, people skills, initiative, humility, and readiness for greater responsibility.</p>
+<label><input class="task" id="lead6" type="checkbox"> Apprenticeship evaluation complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Long-Term Plan</div>
+<h2>Four-Level Pastor Preparation Path</h2>
+<div class="module"><h3>Level 1 — Foundations</h3><p>Bible reading skills, doctrine, prayer, character, local-church service, short teaching assignments.</p></div>
+<div class="module"><h3>Level 2 — Developing Minister</h3><p>Full sermons, pastoral care exposure, leadership of volunteers, theological writing, discipleship, supervised ministry.</p></div>
+<div class="module"><h3>Level 3 — Pastoral Competence</h3><p>Regular teaching, conflict handling, counseling triage, governance, budgeting, leader development, weddings/funerals/hospital ministry under supervision.</p></div>
+<div class="module"><h3>Level 4 — Church-Plant Readiness</h3><p>External assessment, elder affirmation, launch team, financial runway, community research, doctrinal/governance documents, safeguarding systems, preaching plan, discipleship pathway, and demonstrated pastoral fruit.</p></div>
+</section>
+
+
+<section class="track card">
+<div class="kicker">Advanced Course Catalog</div>
+<h2>More Formal Classes</h2>
+
+<div class="module"><div class="label">Class 5 · Christ-Centered Preaching</div>
+<h3>Preaching — Bryan Chapell / Covenant Theological Seminary</h3>
+<p><strong>Course:</strong> <a href="https://www.thegospelcoalition.org/course/preaching" target="_blank">Christ-Centered Preaching</a>.</p>
+<p><strong>Assignment:</strong> Complete the lectures and produce three sermon manuscripts demonstrating textual fidelity, structure, application, and a legitimate connection to the gospel.</p>
+<label><input class="task" id="class5" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 6 · Developing Leaders</div>
+<h3>Leadership Multiplication</h3>
+<p><strong>Course library:</strong> <a href="https://www.thegospelcoalition.org/courses/" target="_blank">TGC Courses</a>. Complete the Developing Leaders material.</p>
+<p><strong>Assignment:</strong> Design a 12-month development pathway for a new volunteer, ministry leader, and potential elder.</p>
+<label><input class="task" id="class6" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 7 · Pastor-Theologian</div>
+<h3>Becoming a Pastor-Theologian</h3>
+<p>Complete the pastor-theologian course in the TGC ministry-practice catalog. Maintain a theological journal connecting doctrine to preaching, counseling, leadership, worship, and discipleship.</p>
+<label><input class="task" id="class7" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 8 · Church Eldership</div>
+<h3>Basics of Church Eldership</h3>
+<p>Complete the eldership material in the TGC course catalog. Compare its conclusions with Acts 20, 1 Timothy 3, Titus 1, Hebrews 13, and 1 Peter 5.</p>
+<p><strong>Assignment:</strong> Write an elder handbook outline covering qualifications, appointment, authority, accountability, meetings, doctrine, discipline, care, finances, conflicts of interest, and removal.</p>
+<label><input class="task" id="class8" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 9 · Youth Ministry</div>
+<h3>Prepare to oversee next-generation ministry</h3>
+<p>Complete the Youth Ministry material in the TGC ministry-practice catalog.</p>
+<p><strong>Assignment:</strong> Build a one-year youth discipleship framework covering Bible, doctrine, prayer, evangelism, sexuality/relationships, apologetics, service, parents, safeguarding, and leadership development.</p>
+<label><input class="task" id="class9" type="checkbox"> Class complete</label></div>
+
+<div class="module"><div class="label">Class 10 · Corporate Worship</div>
+<h3>Theology of Corporate Worship</h3>
+<p>Complete a theology-of-worship course from the TGC catalog, then study John 4:19–26; Romans 12:1–2; 1 Corinthians 11–14; Ephesians 5:15–21; Colossians 3:12–17.</p>
+<p><strong>Assignment:</strong> Write a Sunday-service philosophy explaining Scripture, prayer, preaching, singing, ordinances, spiritual gifts, order, participation, and pastoral oversight.</p>
+<label><input class="task" id="class10" type="checkbox"> Class complete</label></div>
+</section>
+
+<section class="track card">
+<div class="kicker">Church Planting Intensive</div>
+<h2>Church Planter Formation</h2>
+
+<div class="module"><div class="label">Planting 1 · Gospel-Rich Church Planting</div>
+<h3>Five-hour church-planting course</h3>
+<p><strong>Course:</strong> <a href="https://www.thegospelcoalition.org/course/gospel-rich-church-planting/" target="_blank">Gospel-Rich Church Planting</a>.</p>
+<p>Work through purpose, calling and evangelism, discipleship, contextual strategy, team leadership, planting challenges, and definitions of success.</p>
+<p><strong>Assignment:</strong> Produce a 10-page preliminary Awaken Life planting assessment responding to each course section.</p>
+<label><input class="task" id="plant1" type="checkbox"> Course and assessment complete</label></div>
+
+<div class="module"><div class="label">Planting 2 · Motives</div>
+<h3>Examine why you want to plant</h3>
+<p><strong>Course:</strong> <a href="https://www.thegospelcoalition.org/course/motive-church-planting/" target="_blank">The Motive for Church Planting</a>.</p>
+<p><strong>Assignment:</strong> Give a mentor a written assessment of your calling, character, Bible competence, servanthood, evangelism, strengths, weaknesses, motives, and vulnerabilities concerning money, sex, power/control, and pride.</p>
+<label><input class="task" id="plant2" type="checkbox"> Motive assessment complete</label></div>
+
+<div class="module"><div class="label">Planting 3 · Community Exegesis</div>
+<h3>Learn the people before designing the church</h3>
+<p>Choose a hypothetical planting city. Research demographics, existing churches, population growth, age distribution, languages, major employers, colleges, family patterns, community institutions, and unmet pastoral needs.</p>
+<p><strong>Assignment:</strong> Produce a community profile and explain what should—and should not—change about ministry strategy because of the context.</p>
+<label><input class="task" id="plant3" type="checkbox"> Community study complete</label></div>
+</section>
+
+<section class="track card">
+<div class="kicker">Pastoral Case Lab</div>
+<h2>Real-World Ministry Judgment</h2>
+<p class="meta">Work through these with an experienced pastor. The objective is judgment, not merely getting the “right answer.”</p>
+
+<div class="module"><h3>Case 1 — Volunteer Conflict</h3><p>Two key volunteers accuse each other of disrespect and threaten to leave. Develop your fact-finding, reconciliation, documentation, follow-up, and escalation plan.</p><label><input class="task" id="case1" type="checkbox"> Case reviewed with mentor</label></div>
+<div class="module"><h3>Case 2 — Doctrinal Disagreement</h3><p>A ministry leader begins publicly teaching something outside the church's Statement of Faith. Determine how you would distinguish secondary disagreement from disqualifying doctrinal conflict.</p><label><input class="task" id="case2" type="checkbox"> Case reviewed</label></div>
+<div class="module"><h3>Case 3 — Financial Concern</h3><p>A staff member repeatedly submits unclear reimbursements. Map the controls, conversation, review, documentation, and board involvement required.</p><label><input class="task" id="case3" type="checkbox"> Case reviewed</label></div>
+<div class="module"><h3>Case 4 — Pastoral Crisis</h3><p>A congregant reports an urgent mental-health or safety concern. Identify immediate safety actions, pastoral role boundaries, emergency/professional referral, documentation, confidentiality limits, and follow-up.</p><label><input class="task" id="case4" type="checkbox"> Case reviewed</label></div>
+<div class="module"><h3>Case 5 — Staff Underperformance</h3><p>A beloved ministry leader has strong relationships but repeatedly fails core responsibilities. Create a coaching, expectations, review, improvement, and possible transition process.</p><label><input class="task" id="case5" type="checkbox"> Case reviewed</label></div>
+<div class="module"><h3>Case 6 — Rapid Growth</h3><p>Attendance doubles quickly. Determine what must change first in children’s safety, volunteer systems, pastoral care, finances, communications, facilities, leadership span, and discipleship.</p><label><input class="task" id="case6" type="checkbox"> Case reviewed</label></div>
+</section>
+
+<section class="track card">
+<div class="kicker">Sermon Listening Curriculum</div>
+<h2>48-Sermon Analysis Challenge</h2>
+<p>Analyze one sermon per week. Rotate categories rather than listening only to preachers whose style you naturally prefer.</p>
+<div class="module"><h3>Weeks 1–12 — Expository preaching</h3><p>Track main idea, textual structure, explanation, context, theology, application, and conclusion.</p></div>
+<div class="module"><h3>Weeks 13–24 — Evangelistic & gospel preaching</h3><p>Track clarity concerning sin, grace, Christ, repentance, faith, assurance, and invitation/application.</p></div>
+<div class="module"><h3>Weeks 25–36 — Spirit-empowered / charismatic preaching</h3><p>Evaluate biblical faithfulness, dependence on the Spirit, handling of gifts, emotional pressure, discernment, and pastoral responsibility.</p></div>
+<div class="module"><h3>Weeks 37–48 — Pastoral & leadership preaching</h3><p>Analyze sermons dealing with suffering, marriage, conflict, holiness, church life, leadership, mission, money, grief, and cultural pressure.</p></div>
+<label><input class="task" id="sermon48" type="checkbox"> 48 sermon analyses complete</label>
+</section>
+
+<section class="track card">
+<div class="kicker">Bible Mastery</div>
+<h2>Whole-Bible Pastor Track</h2>
+<p>Before treating commentary writing or theological systems as a substitute for direct biblical familiarity, work through the canonical text itself.</p>
+<div class="module"><h3>Pass 1 — Read</h3><p>Read all 66 books straight through. Record only one sentence per chapter so note-taking does not stop momentum.</p><label><input class="task" id="bible1" type="checkbox"> Entire Bible read</label></div>
+<div class="module"><h3>Pass 2 — Outline</h3><p>Create a one-page outline for every biblical book: purpose, structure, major themes, key texts, Christ/gospel connections, and pastoral uses.</p><label><input class="task" id="bible2" type="checkbox"> 66 book outlines complete</label></div>
+<div class="module"><h3>Pass 3 — Teach</h3><p>Teach or record a 10-minute overview of every book. Explain what it says, why it matters, and how it fits the biblical story.</p><label><input class="task" id="bible3" type="checkbox"> 66 book overviews complete</label></div>
+</section>
+
+<section class="track card">
+<div class="kicker">Mentorship</div>
+<h2>Pastoral Mentorship System</h2>
+<div class="module">
+<p>Meet regularly with a mature pastor or ministry leader. Bring actual questions, failures, ministry situations, sermons, and decisions—not merely theoretical theology.</p>
+<p><strong>Quarterly review:</strong> character · doctrine · Bible knowledge · prayer · preaching · people skills · conflict · reliability · leadership · humility · emotional maturity · family/relationships · finances · sexual integrity · teachability.</p>
+<p><strong>Annual question:</strong> “What would make you hesitant to recommend me for pastoral ministry today?” Record the answer and build your next development goals around it.</p>
+<label><input class="task" id="mentor1" type="checkbox"> First annual pastoral review complete</label>
+</div>
+</section>
+
+
+<section class="track card">
+<div class="kicker">Three-Year Curriculum</div>
+<h2>Pastor Preparation Sequence</h2>
+<p class="meta">A deliberate order: Bible and character first, then preaching and shepherding, then leadership and church-plant readiness. Complete this alongside your local-church service and college responsibilities rather than treating it as a race.</p>
+
+<div class="module">
+<div class="label">Year 1 · Biblical & Personal Foundations</div>
+<h3>Build the pastor before building the organization</h3>
+<p><strong>Quarter 1:</strong> BibleProject Introduction to the Hebrew Bible; read Genesis–Deuteronomy; study 1 Timothy; begin a prayer journal; deliver four 5-minute expositions.</p>
+<p><strong>Quarter 2:</strong> Continue whole-Bible reading; study hermeneutics and biblical theology; read 2 Timothy and Titus repeatedly; deliver four more short expositions; begin monthly mentor reviews.</p>
+<p><strong>Quarter 3:</strong> Complete Basics of Preaching; study systematic theology foundations; analyze 12 sermons; serve consistently in one local-church ministry without adding unnecessary titles.</p>
+<p><strong>Quarter 4:</strong> Complete The Work of the Spirit; write a biblical theology of the Holy Spirit and gifts; finish the first whole-Bible reading pass; preach/teach at least four supervised messages if opportunities are provided.</p>
+<p><strong>Year 1 outcome:</strong> Whole Bible read once, basic hermeneutical competence, stable devotional rhythms, clearer doctrine, 12+ short teaching reps, 12 sermon analyses, and documented mentor feedback.</p>
+<label><input class="task" id="year1" type="checkbox"> Year 1 requirements complete</label>
+</div>
+
+<div class="module">
+<div class="label">Year 2 · Pastoral Competence</div>
+<h3>Move from student to supervised practitioner</h3>
+<p><strong>Quarter 1:</strong> The Pastor as Shepherd; shepherding-text study; supervised pastoral visits; begin pastoral case lab.</p>
+<p><strong>Quarter 2:</strong> Christ-Centered Preaching; prepare full sermon manuscripts; preach across different biblical genres; receive written feedback.</p>
+<p><strong>Quarter 3:</strong> Basics/Restoring Biblical Eldership and Doctrine of the Church; study governance, membership, discipline, ordinances, elders, deacons, and church unity.</p>
+<p><strong>Quarter 4:</strong> Church Administration; mock budgets, internal controls, hiring workflows, volunteer systems, safeguarding, emergency response, and staff/elder meeting simulations.</p>
+<p><strong>Year 2 outcome:</strong> 12 full sermons, pastoral-care exposure, governance competence, financial/administrative literacy, conflict simulations, and a formal annual pastoral evaluation.</p>
+<label><input class="task" id="year2" type="checkbox"> Year 2 requirements complete</label>
+</div>
+
+<div class="module">
+<div class="label">Year 3 · Leadership & Multiplication</div>
+<h3>Learn to lead leaders without rushing into senior leadership</h3>
+<p><strong>Quarter 1:</strong> Developing Leaders; disciple and develop people under church oversight; practice delegation, feedback, and volunteer leadership.</p>
+<p><strong>Quarter 2:</strong> Advanced preaching: preach a short-book series; complete the 48-sermon analysis challenge; teach a doctrine series.</p>
+<p><strong>Quarter 3:</strong> Church-planting courses; community exegesis; launch-team theory; financial runway; staffing stages; discipleship pathway; evangelism strategy.</p>
+<p><strong>Quarter 4:</strong> Awaken Life readiness dossier and external assessment. Ask mature pastors to identify reasons you should wait, not merely reasons you could launch.</p>
+<p><strong>Year 3 outcome:</strong> demonstrated leadership of people, leader-development experience, sustained preaching competence, church-operations understanding, and an evidence-based assessment of what still needs years of development.</p>
+<label><input class="task" id="year3" type="checkbox"> Year 3 requirements complete</label>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Weekly Rhythm</div>
+<h2>Normal Training Week</h2>
+<div class="module">
+<p><strong>Monday — Bible:</strong> 45–60 minutes of direct Scripture reading and notes.</p>
+<p><strong>Tuesday — Class:</strong> 30–60 minutes of a structured theology/ministry course.</p>
+<p><strong>Wednesday — Preaching:</strong> exegete a passage or work on a sermon.</p>
+<p><strong>Thursday — Leadership:</strong> read leadership/pastoral material or complete a case study.</p>
+<p><strong>Friday — Formation:</strong> prayer, reflection, character review, and lighter reading.</p>
+<p><strong>Saturday — Review:</strong> finish incomplete work, analyze a sermon, or meet with a mentor.</p>
+<p><strong>Sunday — Church:</strong> worship, serve, observe pastoral leadership, and record one lesson learned from actual ministry.</p>
+<div class="note">During a 10-unit college semester, consistency matters more than volume. A sustainable 4–6 hours of intentional pastoral preparation per week is more valuable than repeatedly designing schedules you cannot maintain.</div>
+</div>
+</section>
+
+<section class="track card">
+<div class="kicker">Year 1 · First 12 Weeks</div>
+<h2>Start Here — Exact Sequence</h2>
+<div class="module"><h3>Weeks 1–4</h3><p><strong>Class:</strong> Begin BibleProject Introduction to the Hebrew Bible.</p><p><strong>Scripture:</strong> Genesis.</p><p><strong>Preaching:</strong> two 5-minute expositions.</p><p><strong>Leadership:</strong> study 1 Timothy 3 and Titus 1; ask a pastor which qualification needs the most development in you.</p></div>
+<div class="module"><h3>Weeks 5–8</h3><p><strong>Class:</strong> Continue Introduction to the Hebrew Bible.</p><p><strong>Scripture:</strong> Exodus–Leviticus.</p><p><strong>Preaching:</strong> analyze four sermons and prepare two short expositions.</p><p><strong>Formation:</strong> establish a repeatable prayer rhythm and record what interrupts it.</p></div>
+<div class="module"><h3>Weeks 9–12</h3><p><strong>Class:</strong> Finish or substantially advance the Hebrew Bible course.</p><p><strong>Scripture:</strong> Numbers–Deuteronomy.</p><p><strong>Reading:</strong> 1 Timothy, 2 Timothy, Titus.</p><p><strong>Leadership:</strong> write a one-page description of biblical pastoral leadership and review it with a mature pastor.</p></div>
+<label><input class="task" id="first12" type="checkbox"> First 12 weeks complete</label>
+</section>
+
+<section class="track card">
+<div class="kicker">Verified Course Queue</div>
+<h2>Courses to Work Through in Order</h2>
+<div class="module"><h3>1. Introduction to the Hebrew Bible</h3><p><a href="https://bibleproject.com/classroom/introduction-to-the-hebrew-bible/" target="_blank">BibleProject Classroom</a> · reading skills, narrative, poetry, literary design.</p></div>
+<div class="module"><h3>2. Basics of Preaching</h3><p><a href="https://www.thegospelcoalition.org/course/basics-of-preaching/" target="_blank">TGC Basics of Preaching</a> · foundations, exposition, preparation, Old Testament, theology, pastoral ministry, preaching to the heart.</p></div>
+<div class="module"><h3>3. Pastoral Epistles — 12 Weeks</h3><p><a href="https://www.thegospelcoalition.org/course/knowing-bible-1-2-timothy-titus/" target="_blank">Knowing the Bible: 1–2 Timothy, Titus</a> · doctrine, leadership, opposition, ministerial conduct, elders, sound doctrine.</p></div>
+<div class="module"><h3>4. The Work of the Spirit</h3><p><a href="https://www.thegospelcoalition.org/course/the-work-of-the-spirit/" target="_blank">The Work of the Spirit</a> · seeking, praying, walking, evangelizing, not quenching, and preaching in the Spirit.</p></div>
+<div class="module"><h3>5. The Pastor as Shepherd</h3><p><a href="https://www.thegospelcoalition.org/course/the-pastor-as-shepherd/" target="_blank">The Pastor as Shepherd</a> · leaders, fruit of the Spirit, unity, prayer.</p></div>
+<div class="module"><h3>6. Christ-Centered Preaching</h3><p><a href="https://www.thegospelcoalition.org/course/christ-centered-preaching/" target="_blank">Christ-Centered Preaching</a> · Word and Spirit, redemptive preaching, sermon development, application.</p></div>
+<div class="module"><h3>7. Basics of Church Eldership</h3><p><a href="https://www.thegospelcoalition.org/course/basics-of-church-eldership/" target="_blank">Basics of Church Eldership</a> · authority, unity, shepherding, leadership development.</p></div>
+<div class="module"><h3>8. Doctrine of the Church</h3><p><a href="https://www.thegospelcoalition.org/course/doctrine-of-the-church/" target="_blank">Doctrine of the Church</a> · church identity, ministry roles, discipline, marks, ministry, renewal.</p></div>
+<div class="module"><h3>9. Church Administration</h3><p><a href="https://www.thegospelcoalition.org/course/church-administration/" target="_blank">Church Administration</a> · oversight, hiring, finance, budgets, team management, legal processes, call to ministry.</p></div>
+<div class="module"><h3>10. Gospel-Rich Church Planting</h3><p><a href="https://www.thegospelcoalition.org/course/gospel-rich-church-planting/" target="_blank">Gospel-Rich Church Planting</a> · save this for later in the sequence after pastoral and leadership foundations.</p></div>
+</section>
+
+<section class="track card">
+<div class="kicker">Progress</div>
+<h2>Overall dashboard progress</h2>
+<div class="progress"><div class="bar" id="overallBar"></div></div>
+<p class="meta" id="overallText">0% complete</p>
+<button onclick="resetProgress()" style="margin-top:12px;padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--text);cursor:pointer">Reset progress</button>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+This dashboard is a formation tool, not a credential. Pastoral readiness should ultimately be tested through Scripture, character, local-church service, ministry fruit, theological examination, and affirmation by mature church leaders.
+</div></footer>
+
+<script>
+const tasks=[...document.querySelectorAll('.task')];
+tasks.forEach(t=>{
+  const saved=localStorage.getItem('pastor-dashboard-'+t.id);
+  if(saved==='true') t.checked=true;
+  t.addEventListener('change',()=>{
+    localStorage.setItem('pastor-dashboard-'+t.id,t.checked);
+    update();
+  });
+});
+function update(){
+  const done=tasks.filter(t=>t.checked).length;
+  const pct=Math.round(done/tasks.length*100);
+  document.getElementById('overallBar').style.width=pct+'%';
+  document.getElementById('overallText').textContent=`${done} of ${tasks.length} items complete · ${pct}%`;
+
+  const today=['today1','today2','today3','today4'].map(id=>document.getElementById(id));
+  const td=today.filter(t=>t.checked).length;
+  document.getElementById('todayBar').style.width=(td/4*100)+'%';
+  document.getElementById('todayText').textContent=`${td} of 4 complete`;
+}
+function resetProgress(){
+  if(confirm('Reset all dashboard progress?')){
+    tasks.forEach(t=>{t.checked=false;localStorage.removeItem('pastor-dashboard-'+t.id)});
+    update();
+  }
+}
+update();
+</script>
+</body>
+</html>
