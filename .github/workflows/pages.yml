@@ -29,6 +29,34 @@ jobs:
         run: |
           mkdir -p _site
           cp "Pastor Preparation Dashboard.html" _site/index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('_site/index.html')
+          s = p.read_text()
+          marker = '<section class="track card">\n<div class="kicker">Track 2</div>\n<h2>Preaching & Teaching</h2>'
+          classes = '''<section class="track card" id="pastor-preparation-classes">
+          <div class="kicker">Pastor Preparation Classes</div>
+          <h2>Core Ministry Classes</h2>
+          <p class="meta">Complete each structured class as part of your pastoral preparation. Whole-Bible reading remains a separate long-term formation goal and is not included in this class list.</p>
+          <div class="module"><h3>Bible & Hermeneutics</h3><p>Interpret Scripture using literary, historical, grammatical, canonical, and theological context.</p><label><input class="task" id="class-hermeneutics" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Systematic Theology</h3><p>Study Scripture, God, Trinity, Christ, humanity and sin, salvation, sanctification, the Holy Spirit, the church, and last things.</p><label><input class="task" id="class-theology" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Preaching & Teaching</h3><p>Develop exegesis, sermon structure, explanation, illustration, application, delivery, and Spirit-dependent preaching.</p><label><input class="task" id="class-preaching" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Holy Spirit & Spiritual Gifts</h3><p>Study the person and work of the Holy Spirit, spiritual gifts, discernment, order, prayer ministry, and biblical charismatic practice.</p><label><input class="task" id="class-spirit" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Pastoral Care & Shepherding</h3><p>Develop competence in visitation, counseling boundaries, grief care, prayer, crisis response, referrals, and shepherding.</p><label><input class="task" id="class-care" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Church Leadership & Eldership</h3><p>Study pastoral qualifications, elders, deacons, accountability, leadership development, meetings, conflict, and church discipline.</p><label><input class="task" id="class-leadership" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Church Administration</h3><p>Learn budgeting, financial controls, policies, volunteers, staff systems, facilities, records, insurance, and ministry operations.</p><label><input class="task" id="class-administration" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Discipleship, Evangelism & Missions</h3><p>Learn to make disciples, share the gospel, equip believers, develop leaders, and cultivate local and global mission.</p><label><input class="task" id="class-discipleship" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Church Planting</h3><p>Study calling, community exegesis, launch-team development, discipleship systems, financial runway, multiplication, and sustainable church planting.</p><label><input class="task" id="class-planting" type="checkbox"> Class complete</label></div>
+          <div class="module"><h3>Pastoral Ethics & Safeguarding</h3><p>Study integrity, confidentiality, boundaries, child protection, abuse response, mandated reporting, sexual ethics, finances, and pastoral accountability.</p><label><input class="task" id="class-ethics" type="checkbox"> Class complete</label></div>
+          </section>
+
+          '''
+          if 'id="pastor-preparation-classes"' not in s:
+              if marker not in s:
+                  raise SystemExit('Track 2 marker not found')
+              s = s.replace(marker, classes + marker, 1)
+          p.write_text(s)
+          PY
           touch _site/.nojekyll
       - name: Upload dashboard
         uses: actions/upload-pages-artifact@v3
